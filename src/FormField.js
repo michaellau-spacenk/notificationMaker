@@ -1,18 +1,22 @@
 import { useState } from 'react';
+import {
+  Input
+} from "@material-tailwind/react";
 
-function FormField({ label, type }) {
+function FormField({ label, type, placeholder, onChange }) {
   const [formValue, setFormValue] = useState('');
 
   const handleChange = (e) => {
     e.preventDefault();
     setFormValue(e.target.value);
+    onChange(e.target.value);
   };
 
   return (
-    <div>
-      <label>{label}</label>
-      <input
-        className="block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+    <div className="w-72 mb-4 mx-auto">
+      <Input
+        label={label}
+        color="black"
         type={type}
         value={formValue}
         onChange={handleChange}
