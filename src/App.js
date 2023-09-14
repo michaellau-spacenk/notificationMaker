@@ -1,19 +1,17 @@
 import { useState } from 'react';
 import FormField from './FormField';
-import {
-  Button, Typography, Radio
-} from "@material-tailwind/react";
+import { Button, Typography, Radio } from '@material-tailwind/react';
 
 function App() {
   const initialData = {
-    id: "testNotification3",
-    icon: "icon-snk-birthday-gift",
-    headline: "This is the notification headline",
+    id: 'testNotification3',
+    icon: 'icon-snk-birthday-gift',
+    headline: 'This is the notification headline',
     copy: "Get yours before it's too late!",
-    customerGroup: "Everyone",
-    endDate: "",
-    targetPage: "pid-333"
-  }
+    customerGroup: 'Everyone',
+    endDate: '',
+    targetPage: 'pid-333',
+  };
   const [data, setData] = useState(initialData);
   const [id, setId] = useState(initialData.id);
   const [headline, setHeadline] = useState(initialData.headline);
@@ -26,36 +24,36 @@ function App() {
 
   const onChangeId = (newId) => {
     setId(newId);
-  }
+  };
 
   const onChangeHeadline = (newHeadline) => {
     setHeadline(newHeadline);
-  }
+  };
 
   const onChangeCopy = (newCopy) => {
     setCopy(newCopy);
-  }
+  };
 
   const onChangeCustomerGroup = (newCustomerGroup) => {
     setCustomerGroup(newCustomerGroup);
-  }
+  };
 
   const onChangeTargetPageValue = (newTargetPageValue) => {
     setTargetPageValue(newTargetPageValue);
-  }
+  };
 
   const onChangeTargetPageType = (e) => {
     setTargetPageType(e.target.value);
-  }
+  };
 
   const onChangeIcon = (e) => {
-    const iconClass = `icon-snk-${e.target.value}`
+    const iconClass = `icon-snk-${e.target.value}`;
     setIcon(iconClass);
-  }
+  };
 
   const onChangeEndDate = (newEndDate) => {
     setEndDate(newEndDate);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,62 +65,129 @@ function App() {
       copy: copy,
       customerGroup: customerGroup,
       endDate: endDate,
-      targetPage: `${targetPageType}-${targetPageValue}`
-    }
+      targetPage: `${targetPageType}-${targetPageValue}`,
+    };
     setData(updatedData);
-  }
+  };
 
   return (
     <div className="bg-stark mx-auto pb-12">
-      <Typography className="mt-0 text-center pt-12 pb-6" variant="h1">Space NK Global Notification Maker</Typography>
+      <Typography className="mt-0 text-center pt-12 pb-6" variant="h1">
+        Space NK Global Notification Maker
+      </Typography>
 
       {/* Output Block */}
-      <div className='mx-12 my-6'>
-        <p className='text-lg font-medium'>Output Data</p>
+      <div className="mx-12 my-6">
+        <p className="text-lg font-medium">Output Data</p>
         <div className="font-mono mx-12 my-4 bg-gray-500 p-4 text-white">
           {JSON.stringify(data)}
         </div>
       </div>
 
-      <form className='mx-12 mt-4' onSubmit={handleSubmit}>
+      <form className="mx-12 mt-4" onSubmit={handleSubmit}>
         {/* ID */}
-        <FormField placeholder={id} label="ID" type="text" onChange={onChangeId} />
+        <FormField
+          placeholder={id}
+          label="ID"
+          type="text"
+          onChange={onChangeId}
+        />
 
         {/* Headline */}
-        <FormField placeholder={headline} label="Headline" type="text" onChange={onChangeHeadline} />
+        <FormField
+          placeholder={headline}
+          label="Headline"
+          type="text"
+          onChange={onChangeHeadline}
+        />
 
         {/* Copy */}
-        <FormField placeholder={copy} label="Copy" type="text" onChange={onChangeCopy} />
+        <FormField
+          placeholder={copy}
+          label="Copy"
+          type="text"
+          onChange={onChangeCopy}
+        />
 
         {/* Icon */}
         <div className="flex flex-col gap-10 justify-center items-center mb-12">
-          <div className='flex'>
-            <Radio name="icon" label="Advent" value="advent-notification" onChange={onChangeIcon} /> 
-            <img className="ml-3 w-12" src="/images/advent-notification.svg" alt="Advent" />
+          <div className="flex">
+            <Radio
+              name="icon"
+              label="Advent"
+              value="advent-notification"
+              onChange={onChangeIcon}
+            />
+            <img
+              className="ml-3 w-12"
+              src={process.env.PUBLIC_URL + '/images/advent-notification.svg'}
+              alt="Advent"
+            />
           </div>
-          <div className='flex'>
-            <Radio name="icon" label="Birthday" value="birthday-gift" onChange={onChangeIcon} /> 
-            <img className="ml-3 w-12" src="/images/birthday-gift.svg" value="birthday-gift" alt="Birthday" />
+          <div className="flex">
+            <Radio
+              name="icon"
+              label="Birthday"
+              value="birthday-gift"
+              onChange={onChangeIcon}
+            />
+            <img
+              className="ml-3 w-12"
+              src={process.env.PUBLIC_URL + '/images/birthday-gift.svg'}
+              value="birthday-gift"
+              alt="Birthday"
+            />
           </div>
-          <div className='flex'>
-            <Radio name="icon" label="Limitless" value="limitless-notification" onChange={onChangeIcon} /> 
-            <img className="ml-3 w-12" src="/images/limitless-notification.svg" alt="Limitless" />
+          <div className="flex">
+            <Radio
+              name="icon"
+              label="Limitless"
+              value="limitless-notification"
+              onChange={onChangeIcon}
+            />
+            <img
+              className="ml-3 w-12"
+              src={
+                process.env.PUBLIC_URL + '/images/limitless-notification.svg'
+              }
+              alt="Limitless"
+            />
           </div>
-          <div className='flex'>
-            <Radio name="icon" label="Matches" value="matches-notification" onChange={onChangeIcon} /> 
-            <img className="ml-3 w-12" src="/images/matches-notification.svg" alt="Matches" />
+          <div className="flex">
+            <Radio
+              name="icon"
+              label="Matches"
+              value="matches-notification"
+              onChange={onChangeIcon}
+            />
+            <img
+              className="ml-3 w-12"
+              src={process.env.PUBLIC_URL + '/images/matches-notification.svg'}
+              alt="Matches"
+            />
           </div>
         </div>
 
         {/* Customer Group */}
-        <FormField placeholder={customerGroup} label="Customer Group" type="text" onChange={onChangeCustomerGroup} />
+        <FormField
+          placeholder={customerGroup}
+          label="Customer Group"
+          type="text"
+          onChange={onChangeCustomerGroup}
+        />
 
         {/* End Date */}
-        <FormField placeholder={endDate} label="End Date" type="datetime-local" onChange={onChangeEndDate} />
+        <FormField
+          placeholder={endDate}
+          label="End Date"
+          type="datetime-local"
+          onChange={onChangeEndDate}
+        />
 
         {/* Target Page */}
         <div class="relative h-10 w-72 min-w-[200px] mx-auto mb-4">
-          <select className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-red-500 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+          <select
+            className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-red-500 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
             onChange={onChangeTargetPageType}
           >
             <option value="pid">Product</option>
@@ -137,10 +202,19 @@ function App() {
             Select a Target Page Type
           </label>
         </div>
-        <FormField placeholder={targetPageValue} label="Value" type="text" onChange={onChangeTargetPageValue} />
+        <FormField
+          placeholder={targetPageValue}
+          label="Value"
+          type="text"
+          onChange={onChangeTargetPageValue}
+        />
 
         {/* Submit Button */}
-        <div className='flex justify-center'><Button type="submit" color="red" variant="filled">Generate</Button></div>
+        <div className="flex justify-center">
+          <Button type="submit" color="red" variant="filled">
+            Generate
+          </Button>
+        </div>
       </form>
     </div>
   );
