@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/notificationMaker/static/css/main.67204f66.css",
+    "main.js": "/notificationMaker/static/js/main.e29d6b35.js",
+    "index.html": "/notificationMaker/index.html",
+    "main.67204f66.css.map": "/notificationMaker/static/css/main.67204f66.css.map",
+    "main.e29d6b35.js.map": "/notificationMaker/static/js/main.e29d6b35.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.67204f66.css",
+    "static/js/main.e29d6b35.js"
+  ]
+}
