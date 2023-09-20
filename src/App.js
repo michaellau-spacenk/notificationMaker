@@ -4,13 +4,13 @@ import { Button, Typography, Radio } from '@material-tailwind/react';
 
 function App() {
   const initialData = {
-    id: 'testNotification3',
+    id: 'test_notification',
     icon: 'icon-snk-birthday-gift',
     headline: 'This is the notification headline',
-    copy: "Get yours before it's too late!",
+    copy: "This is the notification copy",
     customerGroup: 'Everyone',
     endDate: '',
-    targetPage: 'pid-333',
+    targetPage: '',
   };
   const [data, setData] = useState(initialData);
   const [id, setId] = useState(initialData.id);
@@ -20,10 +20,10 @@ function App() {
   const [customerGroup, setCustomerGroup] = useState(initialData.customerGroup);
   const [endDate, setEndDate] = useState(initialData.endDate);
   const [targetPageType, setTargetPageType] = useState('pid');
-  const [targetPageValue, setTargetPageValue] = useState('333');
+  const [targetPageValue, setTargetPageValue] = useState('MUK200026809');
 
   const onChangeId = (newId) => {
-    setId(newId);
+    setId(newId.replaceAll(' ', ''));
   };
 
   const onChangeHeadline = (newHeadline) => {
@@ -57,6 +57,10 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let targetPage = `${targetPageType}-${targetPageValue}`;
+    if (targetPageType === 'none') {
+      targetPage = '';
+    }
     const updatedData = {
       ...data,
       id: id,
@@ -65,7 +69,7 @@ function App() {
       copy: copy,
       customerGroup: customerGroup,
       endDate: endDate,
-      targetPage: `${targetPageType}-${targetPageValue}`,
+      targetPage: targetPage,
     };
     setData(updatedData);
   };
@@ -73,7 +77,7 @@ function App() {
   return (
     <div className="bg-stark mx-auto pb-12">
       <Typography className="mt-0 text-center pt-12 pb-6" variant="h1">
-        Space NK Global Notification Maker
+        Global Notification Maker
       </Typography>
 
       {/* Output Block */}
@@ -171,7 +175,7 @@ function App() {
         {/* Customer Group */}
         <FormField
           placeholder={customerGroup}
-          label="Customer Group"
+          label="Customer Group ID"
           type="text"
           onChange={onChangeCustomerGroup}
         />
