@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import FormField from './FormField';
 import { Button, Typography, Radio } from '@material-tailwind/react';
+import Notification from './Notification';
 
 function App() {
   const initialData = {
@@ -19,8 +20,8 @@ function App() {
   const [icon, setIcon] = useState(initialData.icon);
   const [customerGroup, setCustomerGroup] = useState(initialData.customerGroup);
   const [endDate, setEndDate] = useState(initialData.endDate);
-  const [targetPageType, setTargetPageType] = useState('pid');
-  const [targetPageValue, setTargetPageValue] = useState('MUK200026809');
+  const [targetPageType, setTargetPageType] = useState('');
+  const [targetPageValue, setTargetPageValue] = useState('');
 
   const onChangeId = (newId) => {
     setId(newId.replaceAll(' ', ''));
@@ -86,6 +87,11 @@ function App() {
         <div className="font-mono mx-12 my-4 bg-gray-500 p-4 text-white">
           {JSON.stringify(data)}
         </div>
+      </div>
+
+      {/* Preview */}
+      <div className="mx-12 my-6">
+        <Notification data={data} />
       </div>
 
       <form className="mx-12 mt-4" onSubmit={handleSubmit}>
