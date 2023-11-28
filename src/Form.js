@@ -19,12 +19,11 @@ const Form = () => {
             if (field !== 'icon' && field !== 'targetPage') {
                 obj[field.id] = field.value;
             }
+            if(field.id === 'targetPage' && field.value) {
+                obj[field.id] = targetPageType ? `${targetPageType}-${field.value}` : field.value;
+            }
         });
         obj['icon'] = selectedIcon;
-        if(targetPageType) {
-            obj['targetPage'] = `${targetPageType}-${formData.targetPage || ''}`;
-        }
-        
         return obj
     }, [formData, selectedIcon, targetPageType]) 
 
