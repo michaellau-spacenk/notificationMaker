@@ -64,6 +64,11 @@ export const icons = [
         value: 'icon-snk-matches-notification',
         src: '/images/matches-notification.svg',
     },
+    {
+        label: 'Discount',
+        value: 'icon-snk-discount-notification',
+        src: '/images/discount-notification.svg',
+    }
 ]
 
 export const targetPageTypes = [
